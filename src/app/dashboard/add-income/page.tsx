@@ -55,13 +55,16 @@ export default function AddIncomePage() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-1">Date</label>
+                            <label htmlFor="date" className="block text-sm font-medium text-gray-300 mb-2">
+                                Date
+                            </label>
                             <input
+                                type="datetime-local"
+                                id="date"
                                 name="date"
-                                type="date"
                                 required
-                                defaultValue={new Date().toISOString().split('T')[0]}
-                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                                defaultValue={new Date().toISOString().slice(0, 16)}
+                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 [color-scheme:dark]"
                             />
                         </div>
 

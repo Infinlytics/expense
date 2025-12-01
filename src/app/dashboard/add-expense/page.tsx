@@ -53,6 +53,20 @@ export default function AddExpensePage() {
                         </div>
 
                         <div>
+                            <label htmlFor="date" className="block text-sm font-medium text-gray-300 mb-2">
+                                Date
+                            </label>
+                            <input
+                                type="datetime-local"
+                                id="date"
+                                name="date"
+                                defaultValue={new Date().toISOString().slice(0, 16)}
+                                required
+                                className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all [color-scheme:dark]"
+                            />
+                        </div>
+
+                        <div>
                             <label className="block text-sm font-medium text-gray-300 mb-1">Category</label>
                             <select
                                 name="category"
