@@ -33,8 +33,7 @@ export const authConfig = {
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.id = user.id;
-                // @ts-expect-error - role is not typed in User yet
+                token.id = user.id as string;
                 token.role = user.role;
             }
             return token;
@@ -42,7 +41,6 @@ export const authConfig = {
         async session({ session, token }) {
             if (token?.id) {
                 session.user.id = token.id as string;
-                // @ts-expect-error - role is not typed in Session yet
                 session.user.role = token.role as string;
             }
             return session;
