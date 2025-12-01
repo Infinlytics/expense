@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar"
 import { prisma } from "@/lib/prisma"
 import { Plus, ArrowUpRight, ArrowDownRight, Wallet } from "lucide-react"
 import Link from "next/link"
+import { Income, Expense } from "@prisma/client"
 
 async function getDashboardData(userId: string) {
     try {
@@ -12,8 +13,8 @@ async function getDashboardData(userId: string) {
             prisma.expense.findMany({ where: { userId } }),
         ])
 
-        const totalIncome = incomes.reduce((acc: number, curr) => acc + curr.amount, 0)
-        const totalExpense = expenses.reduce((acc: number, curr) => acc + curr.amount, 0)
+        const totalIncome = incomes.reduce((acc: number, curr: Income) => acc + curr.amount, 0)
+        const totalExpense = expenses.reduce((acc: number, curr: Expense) => acc + curr.amount, 0)
         const balance = totalIncome - totalExpense
 
         return { totalIncome, totalExpense, balance, recentTransactions: [] } // TODO: Merge and sort transactions
