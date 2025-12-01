@@ -12,8 +12,8 @@ async function getDashboardData(userId: string) {
             prisma.expense.findMany({ where: { userId } }),
         ])
 
-        const totalIncome = incomes.reduce((acc, curr) => acc + curr.amount, 0)
-        const totalExpense = expenses.reduce((acc, curr) => acc + curr.amount, 0)
+        const totalIncome = incomes.reduce((acc: number, curr) => acc + curr.amount, 0)
+        const totalExpense = expenses.reduce((acc: number, curr) => acc + curr.amount, 0)
         const balance = totalIncome - totalExpense
 
         return { totalIncome, totalExpense, balance, recentTransactions: [] } // TODO: Merge and sort transactions
